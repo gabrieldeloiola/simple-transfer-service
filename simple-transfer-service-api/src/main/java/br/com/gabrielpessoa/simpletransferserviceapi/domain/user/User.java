@@ -3,6 +3,7 @@ package br.com.gabrielpessoa.simpletransferserviceapi.domain.user;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @Entity(name = "users")
@@ -25,8 +26,9 @@ public class User {
 
     @Column(unique = true)
     private String email;
+    private String password;
+    private BigDecimal balance;
 
     @Enumerated(EnumType.STRING)
     private UserType userType;
-
 }
