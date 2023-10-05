@@ -6,6 +6,7 @@ import br.com.gabrielpessoa.simpletransferserviceapi.repositories.UserRepository
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -25,6 +26,15 @@ public class UserService {
         }
     }
 
+    public User findUserById(UUID id) throws Exception {
+        return userRepository.findById(id)
+                .orElseThrow(()
+                        -> new Exception("Usuário não encontrado"));
+    }
+
+    public void saveUser(User user) {
+        userRepository.save(user);
+    }
 
 
 }
